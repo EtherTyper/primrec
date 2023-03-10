@@ -87,5 +87,21 @@ function cases(f, C) {
 const max = cases([id(1, 2), id(2, 2)], [geq, Cn(inv_sg, geq)]);
 const min = cases([id(1, 2), id(2, 2)], [Cn(inv_sg, geq), geq]);
 
-const div = Mn(Cn(lt, Cn(mul, id(2, 3), Cn(s, id(3, 3))), Cn(s, id(1, 3))));
-const mod = Cn(sub, id(1, 2), Cn(mul, id(2, 2), div));
+function graph(f) {
+    let n = f.arity;
+    return Cn(eq, Cn(f, ...select(1, n, n + 1)), id(n + 1, n + 1));
+}
+
+const graph_mul = graph(mul);
+console.log(graph_mul(5, 4, 20), graph_mul(5, 4, 21), graph_mul(5, 4, 19));
+
+// function bounded_exist(chi) {
+//     return Cn(Pr(z, Cn(add, Cn(chi, id(2, 3)), id(3, 3))), id(1, 2));
+// }
+
+// const find_n = bounded_exist(eq)
+
+// const div = Mn(Cn(lt, Cn(mul, id(2, 3), Cn(s, id(3, 3))), Cn(s, id(1, 3))));
+// const mod = Cn(sub, id(1, 2), Cn(mul, id(2, 2), div));
+
+// const prime = ;
