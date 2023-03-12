@@ -38,6 +38,7 @@ export function Cn(f, ...g) {
 }
 export function Pr(f, g) {
     let n = f.arity;
+    if (g.arity != n + 2) throw new TypeError();
     function h(...args) {
         let x = args.slice(0, -1);
         let y = args[n];
